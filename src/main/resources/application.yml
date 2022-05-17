@@ -1,0 +1,31 @@
+spring:
+  h2:
+    console:
+      enabled: true
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+    defer-datasource-initialization: true
+
+logging:
+  level:
+    com.shawn: DEBUG
+
+jwt:
+  header: Authorization
+  #HS512 ????? ??? ??? ??? 512bit, ? 64byte ??? secret key? ???? ??.
+  #echo 'shawn_springBoot_JWT_tutoria_and_I_am_gonna_be_the_happy_BEDeveloper_who_make_money_a_lot_and_make_whatever_I_want'|base64
+  secret: c2hhd25fc3ByaW5nQm9vdF9KV1RfdHV0b3JpYV9hbmRfSV9hbV9nb25uYV9iZV90aGVfaGFwcHlfQkVEZXZlbG9wZXJfd2hvX21ha2VfbW9uZXlfYV9sb3RfYW5kX21ha2Vfd2hhdGV2ZXJfSV93YW50Cg==
+  token-validity-in-seconds: 86400
