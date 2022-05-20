@@ -25,7 +25,7 @@ logging:
 
 jwt:
   header: Authorization
-  #HS512 ????? ??? ??? ??? 512bit, ? 64byte ??? secret key? ???? ??.
+  #HS512 알고리즘을 사용할 것이기 때문에 512bit, 즉 64byte 이상의 secret key를 사용해야 한다.
   #echo 'shawn_springBoot_JWT_tutoria_and_I_am_gonna_be_the_happy_BEDeveloper_who_make_money_a_lot_and_make_whatever_I_want'|base64
   secret: c2hhd25fc3ByaW5nQm9vdF9KV1RfdHV0b3JpYV9hbmRfSV9hbV9nb25uYV9iZV90aGVfaGFwcHlfQkVEZXZlbG9wZXJfd2hvX21ha2VfbW9uZXlfYV9sb3RfYW5kX21ha2Vfd2hhdGV2ZXJfSV93YW50Cg==
   token-validity-in-seconds: 86400
