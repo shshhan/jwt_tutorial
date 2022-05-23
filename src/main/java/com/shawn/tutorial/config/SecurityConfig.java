@@ -46,11 +46,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticationEntryPoint(jwtAuthenticationEntryPoint)
                 .accessDeniedHandler(jwtAccessDeniedHandler)
 
+                //h2-console을 위한 설정
                 .and()
                 .headers()
                 .frameOptions()
                 .sameOrigin()
 
+                //세션을 사용하지 않기 위해 STATELESS로 설정
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
