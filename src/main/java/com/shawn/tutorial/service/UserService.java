@@ -31,7 +31,7 @@ public class UserService {
 
         User user = User.builder()
                 .username(userDto.getUsername())
-                .password(PasswordEncoder.encode(userDto.getPassword()))
+                .password(passwordEncoder.encode(userDto.getPassword()))
                 .nickname(userDto.getNickname())
                 .authorities(Collections.singleton(authority))
                 .activated(true)
@@ -40,11 +40,20 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    /**
+     * 어떤 username이든 usernamed에 해당하는 user객체와 권한 정보를 가져오는 메서드
+     * @param username
+     * @return
+     */
     @Transactional(readOnly = true)
     public Optional<User> getUserWithAuthorities(String username) {
         return userRepository.findOneWithAuthoritiesByUsername(username);
     }
 
+    /**
+     * 현재 SecurityContext에 저장되어 있는 username에 해당하는 user객체와 권한 정보를 가져오는 메서드
+     * @return
+     */
     @Transactional(readOnly = true)
     public Optional<User> getMyUserWithAuthorities() {
         return SecurityUtil.getCurrentUsername().flatMap(userRepository::findOneWithAuthoritiesByUsername);
